@@ -2,12 +2,16 @@
 import withMT from "@material-tailwind/react/utils/withMT";
 export default withMT({
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         primary: "#E6F4FF",
         secondary: "#032B68",
         tertiary: "#0091FF",
+      },
+      fontFamily: {
+        nunito: ["Nunito Sans", "sans-serif"],
       },
       screens: {
         sm: "320px",
