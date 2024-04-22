@@ -10,7 +10,7 @@ const Skeleton = ({ cards }) => {
     .fill(0)
     .map((_, i) => {
       return (
-        <Card className="w-full animate-pulse" key={i}>
+        <Card className="w-full animate-pulse " key={i}>
           <CardHeader
             shadow={false}
             floated={false}
