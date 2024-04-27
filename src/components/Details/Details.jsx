@@ -13,8 +13,9 @@ const Details = () => {
 
   const getFullName = function (borderingCountry) {
     const borderCountry = data.find(
-      (country) => country.alpha3Code === borderingCountry
+      (country) => country.cca3 === borderingCountry
     );
+    console.log(borderCountry);
     return borderCountry?.name;
   };
 
@@ -48,7 +49,7 @@ const Details = () => {
           className="sm:w-full lg:w-auto lg:h-96 md:w-full shadow-md lg:mr-48"
         />
 
-        <div className="flex flex-col py-10 font-nunito lg:w-full sm:w-full md:w-full xl:w-full">
+        <div className="flex flex-col py-10 font-nunito lg:w-full sm:w-full md:w-full">
           <h1 className="text-3xl font-extrabold">{name}</h1>
           <div className="flex lg:flex-row sm:flex-col md:flex-row justify-between text-[16px]">
             <div className="mt-7 flex-col space-y-2 ">
@@ -65,17 +66,14 @@ const Details = () => {
                   {countryData?.population?.toLocaleString()}
                 </p>
               </span>
-
               <span className="flex flex-row space-x-2">
                 <h1 className="font-semibold">Region:</h1>
                 <p className="dark:font-light">{countryData?.region}</p>
               </span>
-
               <span className="flex flex-row space-x-2">
                 <h1 className="font-semibold">Sub Region:</h1>
                 <p className="dark:font-light">{countryData?.subregion}</p>
               </span>
-
               <span className="flex flex-row space-x-2">
                 <h1 className="font-semibold">Capital:</h1>
                 <p className="dark:font-light">{countryData?.capital}</p>

@@ -1,24 +1,30 @@
 import axios from "axios";
 
-const url = "/src/api/data.json";
+const url = "https://restcountries.com/v3.1/all";
 
 export const fetchData = async () => {
   try {
     const response = await axios.get(url);
 
-    const formattedData = response.data.map((item) => ({
-      name: item.name,
+    const formattedData = response?.data?.map((item) => ({
+      name: item.name.official,
       population: item.population,
-      capital: item.capital,
+      capital: item.capital?.join(", "),
       region: item.region,
       flags: item.flags.svg,
       subregion: item.subregion,
-      nativeName: item.nativeName,
-      tld: item.topLevelDomain,
-      currencies: item.currencies?.map((currency) => currency.name),
-      languages: item.languages?.map((language) => language.name).join(", "),
-      borders: item.borders?.map((border) => border),
-      alpha3Code: item.alpha3Code,
+      nativeName: item.name.nativeName
+        ? Object.values(item.name.nativeName)[0].official
+        : "N/A",
+      tld: item.tld?.join(", "),
+      currencies: item.currencies
+        ? Object.values(item.currencies)[0].name
+        : "N/A",
+      languages: item.languages
+        ? Object.values(item.languages)?.join(", ")
+        : "N/A",
+      borders: Array.isArray(item.borders) ? item.borders : [],
+      cca3: item.cca3,
     }));
 
     return formattedData;
