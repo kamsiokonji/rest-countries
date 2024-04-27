@@ -42,7 +42,7 @@ const Cards = ({ filteredData }) => {
           data?.map((item, index) => (
             <div
               key={index}
-              className="relative sm:w-full flex flex-col overflow-hidden rounded-md bg-white dark:bg-[#2b3743] dark:text-white bg-clip-border text-[#111517] text-[17px] shadow-md font-nunito cursor-pointer"
+              className="relative sm:w-full flex flex-col overflow-hidden rounded-md bg-white dark:bg-[#2b3743] dark:text-white bg-clip-border text-[#111517] text-[17px] shadow-md font-nunito cursor-pointer transition-transform transform hover:-translate-y-1 hover:shadow-lg"
               onClick={() => {
                 handleCardClick(item.name);
               }}

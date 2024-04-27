@@ -2,14 +2,6 @@ import axios from "axios";
 
 const url = "/src/api/data.json";
 
-const getFullName = function (borderingCountry) {
-  const borderCountry = data?.find(
-    (country) => country.cca3 === borderingCountry
-  );
-  console.log(borderCountry);
-  return borderCountry.name;
-};
-
 export const fetchData = async () => {
   try {
     const response = await axios.get(url);
@@ -22,9 +14,11 @@ export const fetchData = async () => {
       flags: item.flags.svg,
       subregion: item.subregion,
       nativeName: item.nativeName,
-      topLevelDomain: item.topLevelDomain,
+      tld: item.topLevelDomain,
       currencies: item.currencies?.map((currency) => currency.name),
       languages: item.languages?.map((language) => language.name).join(", "),
+      borders: item.borders?.map((border) => border),
+      alpha3Code: item.alpha3Code,
     }));
 
     return formattedData;
@@ -68,19 +62,3 @@ export const searchCountries = async (q) => {
     throw new Error("Failed to search countries");
   }
 };
-
-// export const searchCountries = (q, data) => {
-//   try {
-//     if (!q) {
-//       return data;
-//     }
-
-//     const searchedData = data.filter((country) =>
-//       country.name.toLowerCase().includes(q.toString().toLowerCase())
-//     );
-//     return searchedData;
-//   } catch (error) {
-//     console.error("Error searching countries:", error);
-//     throw new Error("Failed to search countries");
-//   }
-// };
