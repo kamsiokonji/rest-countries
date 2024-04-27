@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Select, Option } from "@material-tailwind/react";
-import { useState } from "react";
-import { useEffect } from "react";
 import { fetchRegion, fetchData, searchCountries } from "../../api";
 import { IoMdSearch } from "react-icons/io";
 import Cards from "../Cards/Cards";
@@ -21,28 +19,23 @@ const CountryPicker = () => {
   useEffect(() => {
     const fetchDataAndRegions = async () => {
       try {
-        setLoading(true);
         const fetchedData = await fetchData();
         const distinctRegions = await fetchRegion();
         setData(fetchedData);
         setFilteredData(fetchedData);
         setFetchedRegion(distinctRegions);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setLoading(false);
       }
     };
 
     fetchDataAndRegions();
   }, []);
 
-  useEffect(() => {
-    if (value) {
-      const filtered = data.filter((item) => item.region === value);
-      setFilteredData(filtered);
-    }
-  }, [value, data]);
+  const handleRegionSelect = (value) => {
+    const filtered = data.filter((item) => item.region === value);
+    setFilteredData(filtered);
+  };
 
   useEffect(() => {
     const fetchDataAndSearch = async () => {
@@ -91,22 +84,27 @@ const CountryPicker = () => {
 
         <div className={`sm:w-56 `}>
           <Select
+            label="Filter by Region"
             value={value}
-            onChange={(val) => setValue(val)}
+            animate={{
+              mount: { y: 0 },
+              unmount: { y: 25 },
+            }}
+            onChange={handleRegionSelect}
             className={` dark:bg-[#2b3743] text-[#858585] dark:text-white py-7 border border-none shadow-[rgba(218,218,218,0.50)_0px_3px_8px_3px] dark:shadow-2xl placeholder:text-blue-gray-300 dark:placeholder:text-white placeholder:font-nunito`}
             labelProps={{
-              className: "before:content-none after:content-none",
+              className:
+                "before:content-none px-3 after:content-none dark:text-white text-[#858585] font-nunito text-[14px] ",
             }}
             containerProps={{
               className: "flex items-center",
             }}
-            placeholder="Filter by Region"
           >
             {fetchedRegion?.map((region, index) => (
               <Option
                 key={index}
                 value={region}
-                className=" dark:bg-[#2b3743] dark:text-white text-[#858585]"
+                className=" dark:bg-[#2b3743] dark:text-white text-[#858585] font-nunito"
               >
                 {region}
               </Option>

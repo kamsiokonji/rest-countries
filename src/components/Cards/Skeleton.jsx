@@ -10,11 +10,11 @@ const Skeleton = ({ cards }) => {
     .fill(0)
     .map((_, i) => {
       return (
-        <Card className="w-full animate-pulse " key={i}>
+        <Card className="w-full animate-pulse dark:bg-[#2b3743]" key={i}>
           <CardHeader
             shadow={false}
             floated={false}
-            className="relative grid h-64 place-items-center bg-gray-300"
+            className="relative grid h-64 place-items-center bg-gray-300 dark:bg-[#202d36]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@ const Skeleton = ({ cards }) => {
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="h-12 w-12 text-gray-500"
+              className="h-12 w-12 text-gray-500 dark:text-[#2b3743]"
             >
               <path
                 strokeLinecap="round"
@@ -35,35 +35,35 @@ const Skeleton = ({ cards }) => {
             <Typography
               as="div"
               variant="h1"
-              className="mb-4 h-3 w-56 rounded-full bg-gray-300"
+              className="mb-4 h-3 w-56 rounded-full bg-gray-300 dark:bg-[#202d36]"
             >
               &nbsp;
             </Typography>
             <Typography
               as="div"
               variant="paragraph"
-              className="mb-2 h-2 w-full rounded-full bg-gray-300"
+              className="mb-2 h-2 w-full rounded-full bg-gray-300 dark:bg-[#202d36]"
             >
               &nbsp;
             </Typography>
             <Typography
               as="div"
               variant="paragraph"
-              className="mb-2 h-2 w-full rounded-full bg-gray-300"
+              className="mb-2 h-2 w-full rounded-full bg-gray-300 dark:bg-[#202d36]"
             >
               &nbsp;
             </Typography>
             <Typography
               as="div"
               variant="paragraph"
-              className="mb-2 h-2 w-full rounded-full bg-gray-300"
+              className="mb-2 h-2 w-full rounded-full bg-gray-300 dark:bg-[#202d36]"
             >
               &nbsp;
             </Typography>
             <Typography
               as="div"
               variant="paragraph"
-              className="mb-2 h-2 w-full rounded-full bg-gray-300"
+              className="mb-2 h-2 w-full rounded-full bg-gray-300 dark:bg-[#202d36]"
             >
               &nbsp;
             </Typography>

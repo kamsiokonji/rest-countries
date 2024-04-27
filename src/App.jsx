@@ -3,7 +3,6 @@ import Details from "./components/Details/Details";
 import NotFound from "./components/NotFound/NotFound";
 import AppLayout from "./components/AppLayout/AppLayout";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Cards from "./components/Cards/Cards";
 import CountryPicker from "./components/CountryPicker/CountryPicker";
 
 function App() {
